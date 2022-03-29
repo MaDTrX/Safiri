@@ -1,16 +1,22 @@
+html {
+  height: 100vh;
+}
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  background-color: rgb(108, 111, 111);
 }
 
 a {
   color: #00B7FF;
 }
+
 .login {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   height: 34px;
 }
@@ -19,11 +25,38 @@ a {
   height: 30px;
 }
 
-/* #homepage {
-  background-image: url("https://i.imgur.com/5Oc4ylp.jpg");
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(24, 23, 23);
+  padding:0;
+  margin: 0;
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+form {
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  width: 30%;
+  display: none;
+  flex-direction: column;
+  padding: 10px;
+  background-color: aliceblue;
+}
+
+section {
+  display: flex;
+  align-items: flex-end;
+  background-image: url("https://i.imgur.com/flBtfTM.png");
+  height: 500px;
   background-size: cover;
-  background-repeat: no-repeat;
-} */
+  width: 100%;
+  margin: 40px 0 0 0
+} 
 
 /* form {
   position: absolute;
@@ -39,14 +72,32 @@ a {
   align-items: center;
   border: 10px solid rgba(0, 0, 0,);
   margin: 0 5px 0 5px;
-
 } */
-ul {
+
+/* ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
+} */
 li {
   text-decoration: none;
+}
+#planTrip {
+  width: 80px;
+  height: 30px;
+  border-radius: 40%;
+}
+
+#tripView {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+footer {
+  display: flex;
+  flex-shrink:0;
+  height: 100px;
+  width: 100%;
+  background-color: black;
 }
 

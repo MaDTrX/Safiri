@@ -11,8 +11,8 @@ module.exports = {
 
 function index(req, res) {
     Trip.find({}, function(err, trips) {
-        console.log(trips)
-        res.render('trips/index', {trips })
+        //console.log(trips)
+        res.render('index', { trips })
     })
 }
 

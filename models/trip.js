@@ -54,14 +54,14 @@ const flightSchema = new Schema({
     })
 const tripSchema = new Schema({
     origin: {
-        type: Array,
+        type: String,
         required: true
     },
     destination: {
-        type: Array,
+        type: String,
         required: false
     },
-    departs: Date,
+    depart: Date,
     return: Date, 
 
     flights: [flightSchema], 

@@ -1,45 +1,18 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
-var Amadeus = require('amadeus');
 const isLoggedIn = require('../config/auth');
-
+var Amadeus = require('amadeus');
+const tripsCtrl = require('../controllers/trips.js')
 
 var amadeus = new Amadeus({
   clientId: process.env.AMADEUS_CLIENT_ID,
   clientSecret: process.env.AMADEUS_SECRET
 });
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', tripsCtrl.index)
 
-const API = "api";
-// City search suggestions
-router.get(`/${API}/search`, async (req, res) => {
-  const { keyword } = req.query.originCode;
-  const response = await amadeus.referenceData.locations.get({
-    keyword,
-    subType: Amadeus.location.city,
-  });
-  try {
-    await res.json(JSON.parse(response.body));
-  } catch (err) {
-    await res.json(err);
-  }
-}); 
 
-router.get(`/${API}/hotels`, async (req, res) => {
-  const { cityCode } = req.query;
-  const response = await amadeus.shopping.hotelOffers.get({
-    cityCode,
-  });
-  try {
-    await res.json(JSON.parse(response.body));
-  } catch (err) {
-    await res.json(err);
-  }
-});
 router.get(`/flight-search`, isLoggedIn,  (req, res) => {
   const originCode = req.query.originCode;
   const destinationCode = req.query.destinationCode;
@@ -86,3 +59,15 @@ router.get('/logout', function(req, res){
 });
 
 module.exports = router;
+
+  // router.get(`/api/hotels`, (req, res) => {
+  //   const cityCode = req.query.originCode;
+  //    amadeus.shopping.hotelOffers.get({
+  //     cityCode: "MAD"
+    
+  // }).then(function (response) {
+  //   res.send(response);
+  // }).catch(function (response) {
+  //   res.send(response);
+  // })
+  // });

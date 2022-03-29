@@ -1,5 +1,49 @@
 <%-include('./partials/header.ejs')-%>
-<form action="/api/search"  method="GET">
+<section>
+<button id="planTrip">Plan a trip</button>
+</section>
+<form id="addTrip" action="/trips" method="POST">
+    <button id="close" type="button">X</button>
+    <label>Origin:</label>
+    <input type="text" name="origin">
+    <label>Destination:</label>
+    <input type="text" name="destination">
+    <label>Depart Date:</label>
+    <input type="datetime-local" name="depart">
+    <label>Return Date:</label>
+    <input type="datetime-local" name="return">
+    <input id="addBtn" type="submit" value="Add Trip">
+  </form>
+  <div>
+    <h2> My Trips </h2>
+    <ul>
+    <% if(user) { %>
+      <% trips.forEach((trip)=> {%>
+        <li>
+             <a href="/trips/<%=trip._id%>"><%= trip.origin %></a>
+        </li>
+        <li>
+            <a href="/trips/<%trip._id%>"><%= trip.destination %></a>
+        </li>
+        <li>
+            <a href="/trips/<%trip._id%>"><%= trip.depart %></a>
+        </li>
+        <li>
+            <a href="/trips/<%trip._id%>"><%= trip.return %></a>
+        </li>
+        <li>
+            <a href="/trips/<%trip._id%>"><%= trip.total %></a>
+        </li>
+        <%}) %>
+     <% } %>
+ 
+</ul>
+  </div>
+  
+
+<%-include('./partials/footer.ejs')-%>
+
+<!-- <form action="/flight-search"  method="GET">
   <label>From:
         <input type="text" name="originCode">
       </label>
@@ -17,6 +61,9 @@
       </label>
       <input type="submit" value="Search Flights">
     </form> 
-  </body>
-</html>
-<%-include('./partials/footer.ejs')-%>
+    <form action="/api/hotels"  method="GET">
+      <label>From:
+            <input type="text" name="cityCode">
+          </label>
+          <input type="submit" value="Search Hotels">
+        </form>  -->

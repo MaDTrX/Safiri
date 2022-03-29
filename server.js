@@ -17,7 +17,7 @@ require('./config/passport.js');
 var indexRouter = require('./routes/index.js');
 var tripsRouter = require('./routes/trips.js');
 // var flightsRouter = require('./routes/flights.js');
-// var hotelsRouter = require('./routes/hotels.js');
+ //var hotelsRouter = require('./routes/hotels.js');
 // var calendarRouter = require('./routes/calendar.js');
 // var toursRouter = require('./routes/tours.js');
 
@@ -55,6 +55,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/trips', tripsRouter);
+//app.use('/', hotelsRouter)
 // app.use('/flights', flightsRouter);
 // app.use('/hotels', hotelsRouter);
 // app.use('/calendar', calendarRouter);
