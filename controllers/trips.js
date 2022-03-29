@@ -5,7 +5,8 @@ module.exports = {
     index,
     new: newTrip,
     show,
-    create
+    create, 
+    //search
 }
 
 function index(req, res) {
@@ -17,6 +18,7 @@ function index(req, res) {
 
 
 function newTrip  (req, res) {
+
     res.render('trips/new')
 }
 
@@ -29,11 +31,11 @@ function show (req, res) {
 function create (req, res) {
 
     const trip = new Trip(req.body)
+    console.log(req.body)
     trip.save((err) => {
         if (err) return res.render('trips/new')
         res.redirect('trips')
     })
     
 }
-
 

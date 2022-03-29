@@ -1,0 +1,40 @@
+<%-include('../partials/header.ejs')-%>
+
+        <ul>
+            
+                <% response.data.forEach((flightOffers)=> { %>
+                    <form action="/trips" method="POST">
+                        <label>
+                            Price: <input type="text" name="price" value="$<%= flightOffers.price.total %>" readonly>
+                               </label>
+                        <% flightOffers.itineraries.forEach((it)=> { %>
+                            <% it.segments.forEach((seg)=> { %>
+                                <a href="#">
+                                    <li><label> Flight Duration:
+                                            <input type="text" name="duration" value="<%= seg.duration %>" readonly>
+                                        </label> -
+                                        <label> Origin:
+                                            <input type="text" name="from" value="<%= seg.departure.iataCode %>"readonly>
+                                        </label> -
+                                        <label> Destination:
+                                            <input type="text" name="to" value="<%= seg.arrival.iataCode %>" readonly> 
+                                        </label> -
+                                        <label>Take-Off:
+                                            <input type="text" name="depart" value="<%= seg.departure.at %>" readonly>
+                                        </label> -
+                                        <label>Landing:
+                                            <input type="text" name="arrival" value="<%= seg.arrival.at %>" readonly>
+                                        </label>
+                                    </li>
+                                </a>
+                                
+                                <% }) %>
+                                <% }) %>
+                                <input type="submit" value="Add Flight To Trip">
+                            </form>
+
+                                        <%})%>
+
+        </ul>
+    </html>
+    <%-include('../partials/footer.ejs')-%>

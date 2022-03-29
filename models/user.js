@@ -8,10 +8,11 @@ const userSchema = new Schema({
       required: true
     },
     email: String,
-    avatar: String
+    avatar: String,
+    banned: Boolean,
   }, {
     timestamps: true
   });
-  
+
 module.exports = mongoose.model('User', userSchema);
 

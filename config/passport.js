@@ -12,16 +12,18 @@ passport.use(
       },
       // The verify callback function
       function(accessToken, refreshToken, profile, cb) {
-        // a user has logged in with OAuth...
-        User.findOne({ googleId: profile.id }).then(async function(user) {
-          if (user) return cb(null, user);
+          // a user has logged in with OAuth...
+          User.findOne({ googleId: profile.id }).then(async function(user) {
+         if (user && user.banned === true) return cb((err) => {console.log('you banned')})///test banning users
+          if (user && user.banned === false ) return cb(null, user);
           // We have a new user via OAuth!
           try {
             user = await User.create({
               name: profile.displayName,
               googleId: profile.id,
               email: profile.emails[0].value,
-              avatar: profile.photos[0].value
+              avatar: profile.photos[0].value,
+              banned: false,
             });
             return cb(null, user);
           } catch (err) {
@@ -30,7 +32,7 @@ passport.use(
         });
       }
     )
-  );
+    )
   passport.serializeUser(function(user, cb) {
     cb(null, user._id);
   });

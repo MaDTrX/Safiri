@@ -5,13 +5,21 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
 const passport = require('passport')
+const parser = require('body-parser')
+const methodOverride = require('method-override');
+
 
 require('dotenv').config()
 require('./config/database.js')
 require('./config/passport.js');
 
+
 var indexRouter = require('./routes/index.js');
 var tripsRouter = require('./routes/trips.js');
+// var flightsRouter = require('./routes/flights.js');
+// var hotelsRouter = require('./routes/hotels.js');
+// var calendarRouter = require('./routes/calendar.js');
+// var toursRouter = require('./routes/tours.js');
 
 var app = express();
 
@@ -23,7 +31,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(parser.json())
 
 
 // new code below
@@ -45,6 +55,10 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/trips', tripsRouter);
+// app.use('/flights', flightsRouter);
+// app.use('/hotels', hotelsRouter);
+// app.use('/calendar', calendarRouter);
+// app.use('/tours', toursRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

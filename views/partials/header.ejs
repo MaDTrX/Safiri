@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Safe Travels</title>
+</head>
+<body id="homepage">
+    <nav>
+        <% if (user) { %>
+          <a href="/flights"%>>
+            Flights</a>
+          <a href="/hotels">Hotels</a>
+          <a href="/tours"%>>
+            Tour/Tickets</a>
+          <a href="/trips/calender"%>>
+            Calender</a>
+          <a href="/trips">My trips</a>
+          <a href="/logout">LOG OUT</a>
+        <% } else { %>
+          <a href="/flights"%>>
+            Flights</a>
+          <a href="/hotels">Hotels</a>
+          <a href="/tours"%>>
+            Tour/Tickets</a>
+          <a href="/calender">Calender</a>
+          <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %>
+      </nav>
+    

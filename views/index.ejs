@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <nav>
-      <img src="/images/camera.svg">
-      <a href="/trips" >All Trips</a>
-      <% if (user) { %>
-        <a href="/trips/new"%>>
-          Calender</a>
-        <a href="/trips/">Budget</a>
-        <a href="/logout">LOG OUT</a>
-      <% } else { %>
-        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-      <% } %>
-    </nav>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="/trips">View Trips</a>
+<%-include('./partials/header.ejs')-%>
+<form action="/api/search"  method="GET">
+  <label>From:
+        <input type="text" name="originCode">
+      </label>
+      <label>To:
+        <input type="text" name="destinationCode">
+      </label>
+      <label>Departs:
+        <input type="text" name="dateOfDeparture">
+      </label>
+      <label>Return:
+        <input type="text" name="dateOfReturn">
+      </label>
+      <label>People:
+        <input type="number" min="1" max="7" name="adults">
+      </label>
+      <input type="submit" value="Search Flights">
+    </form> 
   </body>
 </html>
+<%-include('./partials/footer.ejs')-%>

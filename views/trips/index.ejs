@@ -12,10 +12,19 @@
     <ul>
         <% trips.forEach((trip)=> {%>
             <li>
-                 <a href="/trips/<%=trip._id%>"><%= trip.duration %></a>
+                 <a href="/trips/<%=trip._id%>"><%= trip.from %></a>
             </li>
             <li>
-                <a href="/trips/<%trip._id%>"><%= trip.airline %></a>
+                <a href="/trips/<%trip._id%>"><%= trip.to %></a>
+            </li>
+            <li>
+                <a href="/trips/<%trip._id%>"><%= trip.depart %></a>
+            </li>
+            <li>
+                <a href="/trips/<%trip._id%>"><%= trip.return %></a>
+            </li>
+            <li>
+                <a href="/trips/<%trip._id%>"><%= trip.price %></a>
             </li>
             <%}) %>
     </ul>

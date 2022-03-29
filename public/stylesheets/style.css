@@ -1,4 +1,6 @@
 body {
+  display: flex;
+  justify-content: center;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -16,3 +18,35 @@ a {
 .login img {
   height: 30px;
 }
+
+/* #homepage {
+  background-image: url("https://i.imgur.com/5Oc4ylp.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
+/* form {
+  position: absolute;
+  top: 33%;
+  left:15%;
+  right:15%;
+  width: 75%;
+  height: 50px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 10px solid rgba(0, 0, 0,);
+  margin: 0 5px 0 5px;
+
+} */
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+li {
+  text-decoration: none;
+}
+
