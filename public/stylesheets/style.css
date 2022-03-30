@@ -48,7 +48,7 @@ form {
   background-color: aliceblue;
 }
 
-section {
+#startPlan {
   display: flex;
   align-items: flex-end;
   background-image: url("https://i.imgur.com/flBtfTM.png");
@@ -100,4 +100,15 @@ footer {
   width: 100%;
   background-color: black;
 }
+#addFlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://i.imgur.com/flBtfTM.png");
+  height: 500px;
+  background-size: cover;
+  width: 100%;
+  margin: 40px 0 0 0
+} 
+
 

@@ -57,18 +57,33 @@ const tripSchema = new Schema({
         type: String,
         required: true
     },
+    originIATA: {
+        type:String,
+        required: true
+    },
+    destinationIATA: {
+        type: String,
+        required: true
+    },
     destination: {
         type: String,
-        required: false
+        required: true
     },
-    depart: Date,
-    return: Date, 
+    depart: {
+        type: Date,
+        required: true
+    },
+    return: {
+        type: Date,
+        required: true
+    }, 
 
     flights: [flightSchema], 
     hotels: [hotelSchema], 
     // tours: [tourSchema], 
     total: {
-        type:String
+        type:String,
+        required: false
     }
 },
     {

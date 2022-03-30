@@ -12,8 +12,8 @@ var amadeus = new Amadeus({
 
 router.get('/', tripsCtrl.index)
 
-
 router.get(`/flight-search`, isLoggedIn,  (req, res) => {
+  
   const originCode = req.query.originCode;
   const destinationCode = req.query.destinationCode;
   const dateOfDeparture = req.query.dateOfDeparture
