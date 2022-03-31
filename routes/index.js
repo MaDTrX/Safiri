@@ -12,29 +12,6 @@ var amadeus = new Amadeus({
 
 router.get('/', tripsCtrl.index)
 
-router.get(`/flight-search`, isLoggedIn,  (req, res) => {
-  
-  const originCode = req.query.originCode;
-  const destinationCode = req.query.destinationCode;
-  const dateOfDeparture = req.query.dateOfDeparture
-  const dateOfReturn = req.query.dateOfReturn
-  const numberOfPeople = req.query.adults
-  // Find the cheapest flights
-  amadeus.shopping.flightOffersSearch.get({
-      originLocationCode: originCode,
-      destinationLocationCode: destinationCode,
-      departureDate: dateOfDeparture,
-      returnDate: dateOfReturn,
-      adults: numberOfPeople,
-      max: '7'
-  }).then(function (response) {
-      res.render('flights', {response});
-  }).catch(function (response) {
-      res.send(response);
-  });
-  });
-
-
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
   'google',

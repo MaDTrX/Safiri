@@ -1,0 +1,18 @@
+<%-include('../partials/header.ejs')-%>
+<section id="editPlan">
+    <button id="editTrip">Plan a trip</button>
+    </section>
+    <form id="editForm" action="/trips/<%=trip._id%>?_method=PUT" method="POST">
+        <button id="close" type="button">X</button>
+        <label>Origin:</label>
+        <input type="text" name="origin">
+        <label>Destination:</label>
+        <input type="text" name="destination">
+        <label>Depart Date:</label>
+        <input type="datetime-local" name="depart">
+        <label>Return Date:</label>
+        <input type="datetime-local" name="return">
+        <input id="addBtn" type="submit" value="Add Trip">
+      </form>
+      <div>
+<%-include('../partials/footer.ejs')-%> 

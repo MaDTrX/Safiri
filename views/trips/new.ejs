@@ -7,6 +7,42 @@
          <li><%= trip.return %> </li>
     </div>
     <button id="flightBtn">Pick a flight</button>
+    <form action="/trips/<%=trip._id%>/edit" id="editTrip" method="GET">
+    <button id="edit" type="submit">📝</button>
+    </form>
+    <form action="/flights/flight-search" id="flightSearch" method="GET">
+        <button id="close2" type="button">X</button>
+  <label>From:
+        <input type="text" name="originIATA" value="<%=trip.originIATA%>" readonly>
+      </label>
+      <label>To:
+        <input type="text" name="destinationIATA"  value ="<%=trip.destinationIATA%>" readonly>
+      </label>
+      <label>Depart:
+        <input type="datetime" name="dateOfDeparture" value="<%=new Date(trip.depart)%>" readonly>
+      </label>
+      <label>Return:
+        <input type="datetime" name="dateOfReturn" value="<%=new Date(trip.return)%>" readonly>
+      </label>
+      <label>People:
+        <input type="number" min="1" max="7" name="adults" required>
+      </label>
+      <label>Travel Class:
+        <Select name="travelClass">
+            <option value="ECONOMY">ECONOMY</option>
+            <option value="PREMIUM_ECONOMY">PREMIUM_ECONOMY</option>
+            <option value="BUSINESS">BUSINESS</option>
+            <option value="FIRST">FIRST</option>
+        </Select>
+      </label>
+      <label>Curency:
+        <input type="text" name="currencyCode" >
+      </label>
+      <label>Max Price:
+        <input type="number" min="1"  name="maxPrice" value="10000">
+      </label>
+      <input type="submit" value="Search Flights">
+    </form>
     
 </section>
 

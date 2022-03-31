@@ -5,10 +5,13 @@ const tripsCtrl = require('../controllers/trips.js')
 
 
    
-router.get('/',isLoggedIn, tripsCtrl.new)
-router.get('/new',isLoggedIn, tripsCtrl.new)
-router.get('/:id',isLoggedIn, tripsCtrl.show)
-router.post('/',isLoggedIn, tripsCtrl.create)
+router.get('/', tripsCtrl.index)
+//router.get('/:id', tripsCtrl.show)
+router.post('/new', tripsCtrl.create)
+router.get('/:id/edit', tripsCtrl.edit)
+router.put('/:id/', tripsCtrl.update)
+router.delete('/:id', tripsCtrl.delete)
+
 
 
 module.exports = router;

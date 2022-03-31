@@ -2,7 +2,7 @@
 <section id="startPlan">
 <button id="planTrip">Plan a trip</button>
 </section>
-<form id="addTrip" action="/trips" method="POST">
+<form id="addTrip" action="/trips/new" method="POST">
     <button id="close" type="button">X</button>
     <label>Origin:</label>
     <input type="text" name="origin">
@@ -17,8 +17,14 @@
   <div>
     <h2> My Trips </h2>
     <ul>
-    <% if(user) { %>
+    
       <% trips.forEach((trip)=> {%>
+        <form action="/trips/<%=trip._id%>/edit" method="GET">
+          <button type="submit">📝</button>
+         </form>
+         
+        <form action="/trips/<%=trip._id%>?_method=DELETE" method="POST">
+          <button type="submit">X</button>
         <li>
              <a href="/trips/<%=trip._id%>"><%= trip.origin %></a>
         </li>
@@ -34,8 +40,9 @@
         <li>
             <a href="/trips/<%trip._id%>"><%= trip.total %></a>
         </li>
+      </form>
         <%}) %>
-     <% } %>
+    
  
 </ul>
   </div>
