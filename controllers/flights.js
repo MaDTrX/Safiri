@@ -30,7 +30,7 @@ function search (req, res) {
         travelClass: req.query.class,
         currencyCode: req.query.currency,
         maxPrice: req.query.maxPrice,
-        max: '80'
+        max: '7'
     }).then(function (response) {
         res.render('flights/shop', { response });
     }).catch(function (response) {

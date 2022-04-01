@@ -4,7 +4,7 @@
 
   <% flights.forEach((flight)=> {%>
  
-    <form action="/flights/<%=flight._id%>?_method=DELETE" method="DELETE">
+    <form action="/flights/<%=flight._id%>?_method=DELETE" method="POST">
       <button type="submit">X</button>
       </form>
     <li>

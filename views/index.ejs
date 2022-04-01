@@ -14,37 +14,42 @@
     <input type="datetime-local" name="return">
     <input id="addBtn" type="submit" value="Add Trip">
   </form>
-  <div>
+  
     <h2> My Trips </h2>
-    <ul>
-    
-      <% trips.forEach((trip)=> {%>
-        <form action="/trips/<%=trip._id%>/edit" method="GET">
-          <button type="submit">📝</button>
-         </form>
-         
-        <form action="/trips/<%=trip._id%>?_method=DELETE" method="POST">
-          <button type="submit">X</button>
-        <li>
-             <a href="/trips/<%=trip._id%>"><%= trip.origin %></a>
-        </li>
-        <li>
-            <a href="/trips/<%trip._id%>"><%= trip.destination %></a>
-        </li>
-        <li>
-            <a href="/trips/<%trip._id%>"><%= trip.depart %></a>
-        </li>
-        <li>
-            <a href="/trips/<%trip._id%>"><%= trip.return %></a>
-        </li>
-        <li>
-            <a href="/trips/<%trip._id%>"><%= trip.total %></a>
-        </li>
-      </form>
+    <div id="tripCard">
+    <% trips.forEach((trip)=> {%>
+      <ul id="displayUD">
+        <li id="origin">
+             <a  href="/trips/<%=trip._id%>"><%= trip.origin %></a>
+            </li>
+            <li id="destination">
+              <a  href="/trips/<%trip._id%>"><%= trip.destination %></a>
+            </li>
+            <li id="depart">
+              <a  href="/trips/<%trip._id%>"><%= trip.depart %></a>
+            </li>
+            <li id="return">
+              <a  href="/trips/<%trip._id%>"><%= trip.return %></a>
+            </li>
+            <li id="total">
+              <a  href="/trips/<%trip._id%>"><%= trip.total %></a>
+            </li>
+            <li id="budget">
+              <a  href="/trips/<%trip._id%>"><%= trip.total %></a>
+            </li>
+            <li id="edit" class="hover">
+            <form  action="/trips/<%=trip._id%>/edit" method="GET">
+              <button type="submit">📝</button>
+             </form>
+            </li>
+            <li  id="delete" class="hover">
+            <form  action="/trips/<%=trip._id%>?_method=DELETE" method="POST">
+              <button  type="submit">💀</button>
+            </form>
+            </li>
+            
+      </ul>
         <%}) %>
-    
- 
-</ul>
   </div>
   
 

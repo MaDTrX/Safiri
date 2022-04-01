@@ -1,40 +1,30 @@
 <%-include('../partials/header.ejs')-%>
 
-        <ul>
-            
+            <div id="flightShop">
                 <% response.data.forEach((flightOffers)=> { %>
-                    <form action="/flights/new" method="POST">
-                        <label>
-                            Price: <input type="text" name="price" value="$<%= flightOffers.price.total %>" readonly>
-                               </label>
+                    <form id="flightList" action="/flights/new" method="POST">
+                        <input id="selectFlight"type="submit" value="Add Flight To Trip">
+                        <label>Price:</label><input class="inp" type="text" name="price" value="$<%= flightOffers.price.total %>" readonly>
                         <% flightOffers.itineraries.forEach((it)=> { %>
                             <% it.segments.forEach((seg)=> { %>
-                                <a href="#">
-                                    <li><label> Flight Duration:
-                                            <input type="text" name="duration" value="<%= seg.duration %>" readonly>
-                                        </label> -
-                                        <label> Origin:
-                                            <input type="text" name="from" value="<%= seg.departure.iataCode %>"readonly>
-                                        </label> -
-                                        <label> Destination:
-                                            <input type="text" name="to" value="<%= seg.arrival.iataCode %>" readonly> 
-                                        </label> -
-                                        <label>Take-Off:
-                                            <input type="text" name="depart" value="<%= seg.departure.at %>" readonly>
-                                            <label>Landing:
-                                                <input type="text" name="arrival" value="<%= seg.arrival.at %>" readonly>
-                                            </label>
-                                        </label> -
-                                    </li>
-                                </a>
+                                    <ul id="shopping"> 
+                                            <li><label>Flight Duration:</label><input class="inp" type="text" name="duration" value="<%= seg.duration %>" readonly></li>
+                                        
+                                            <li><label> Origin:</label><input class="inp" type="text" name="from" value="<%= seg.departure.iataCode %>"readonly></li>
+                                        
+                                            <li><label> Destination:</label><input class="inp" type="text" name="to" value="<%= seg.arrival.iataCode %>" readonly></li> 
+                                       
+                                            <li><label>Take-Off:</label> <input class="inp" type="text" name="depart" value="<%= seg.departure.at %>" readonly></li>
+                                            
+                                            <li><label>Landing:</label><input class="inp" type="text" name="arrival" value="<%= seg.arrival.at %>" readonly></li>
+                                    </ul>
                                 
                                 <% }) %>
                                 <% }) %>
-                                <input type="submit" value="Add Flight To Trip">
                             </form>
 
                                         <%})%>
-
-        </ul>
+                                    </div>
+        
     
     <%-include('../partials/footer.ejs')-%>

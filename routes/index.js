@@ -11,6 +11,9 @@ var amadeus = new Amadeus({
 });
 
 router.get('/', tripsCtrl.index)
+router.get('/home', (req, res) => {
+  res.redirect('/')
+})
 
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(

@@ -1,35 +1,82 @@
 html {
   height: 100vh;
+  max-width: 100%;
 }
+
 body {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  margin: 0;
-  background-color: rgb(108, 111, 111);
+  font-family: 'Special Elite', cursive;
+  font-size: 16px;
+  margin: 0 auto;
+  background-color: #091643;
+  ;
 }
 
-a {
-  color: #00B7FF;
+ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "org dest"
+    "depart return"
+    "total budget"
+    "edit dlt";
+  list-style: none;
+  width: 12.5vw;
+  justify-content: center;
+  padding: 10px;
+  background-color: rgba(228, 230, 233, 0.507);
+  border-radius: 10px;
+  box-shadow: 0 4px 11px 1px rgba(0, 0, 0, 0.459);
+
 }
 
-.login {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 34px;
+li {
+  text-decoration: none;
+  height: 50px;
 }
 
-.login img {
-  height: 30px;
+#origin {
+  grid-area: org;
+}
+
+#destination {
+  grid-area: dest;
+}
+
+#depart {
+  grid-area: depart;
+}
+
+#return {
+  grid-area: return;
+}
+
+#total {
+  grid-area: total;
+}
+
+#budget {
+  grid-area: budget;
+}
+
+#edit {
+  grid-area: edit;
+}
+
+#delete {
+  grid-area: dlt;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(24, 23, 23);
-  padding:0;
+  align-items: center;
+  background-color: rgb(7, 18, 53);
+  padding: 0;
   margin: 0;
   height: 40px;
   width: 100%;
@@ -37,34 +84,107 @@ nav {
   top: 0;
 }
 
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 200px;
+  height: 40px;
+  color: #00B7FF;
+  border-radius: 30px;
+}
+
+.navBar:hover {
+  text-decoration: none;
+  background-color: aliceblue;
+
+}
+
+footer {
+  display: flex;
+  flex-shrink: 0;
+  height: 100px;
+  width: 100%;
+  background-color: black;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  color: #00B7FF;
+  border-radius: 30px;
+}
+
+.login:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  color: #040404;
+  border-radius: 30px;
+  background-color: aliceblue;
+}
+
+.login img {
+  height: 30px;
+}
+
 #addTrip {
   position: absolute;
   top: 25%;
-  left: 35%;
-  width: 30%;
+  left: 40%;
+  width: 350px;
   display: none;
   flex-direction: column;
   padding: 10px;
   background-color: aliceblue;
+  border-radius: 10px;
+
 }
 
 #startPlan {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   background-image: url("https://i.imgur.com/flBtfTM.png");
   height: 500px;
   background-size: cover;
   width: 100%;
   margin: 40px 0 0 0
-} 
-
-li {
-  text-decoration: none;
 }
+
 #planTrip {
-  width: 80px;
-  height: 30px;
-  border-radius: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 60px;
+  border-radius: 50px;
+  background-color: #071235;
+  ;
+  color: rgb(77, 199, 244);
+  font-family: 'Special Elite', cursive;
+  font-size: xx-large
+}
+
+#planTrip:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 60px;
+  border-radius: 50px;
+  background-color: #c9f0ff;
+  color: black;
+  font-family: 'Special Elite', cursive;
+  font-size: xx-large;
+  animation: animate 3s linear infinite;
+
 }
 
 #tripView {
@@ -72,13 +192,7 @@ li {
   flex-wrap: wrap;
   justify-content: space-around;
 }
-footer {
-  display: flex;
-  flex-shrink:0;
-  height: 100px;
-  width: 100%;
-  background-color: black;
-}
+
 #addFlight {
   display: flex;
   align-items: center;
@@ -88,17 +202,18 @@ footer {
   background-size: cover;
   width: 100%;
   margin: 40px 0 0 0
-} 
+}
 
 #flightSearch {
   position: absolute;
-  top: 25%;
+  top: 30%;
   left: 35%;
   width: 30%;
   display: flex;
   flex-direction: column;
   padding: 10px;
-  background-color: aliceblue;
+  background-color: rgba(75, 92, 108, 0.924);
+
 }
 
 #editTrip {
@@ -109,8 +224,9 @@ footer {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  background-color: aliceblue;
+  background-color: rgb(124, 126, 128);
 }
+
 #editForm {
   position: absolute;
   top: 25%;
@@ -122,3 +238,143 @@ footer {
   background-color: aliceblue;
 }
 
+#tripCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0;
+  margin: auto;
+}
+
+.world {
+  font-size: xx-large;
+  text-decoration: none;
+}
+
+/* .hover {
+   display:none
+ }
+
+ul:hover :where(.hover)  {
+  background:rgb(24, 23, 23);
+  display: flex
+} */
+
+@keyframes animate {
+  0% {
+    box-shadow: 0 0 0 0 rgba(38, 136, 249, 0.7)
+  }
+
+  40% {
+    box-shadow: 0 0 0 50px rgba(12, 71, 174, 0)
+  }
+
+  80% {
+    box-shadow: 0 0 0 50px rgba(13, 163, 227, 0)
+  }
+
+  100% {
+    box-shadow: 0 0 0 rgba(134, 143, 134, 0)
+  }
+
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aqua
+}
+
+#newFlightDetails {
+  width: 100%;
+  margin-left: 5%;
+  margin-right: 70%;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  background-color: #071235a3;
+  text-align: center;
+
+}
+
+#flightShop {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 80%;
+  padding: 0;
+  margin: 60px;
+  margin-left: 10%;
+  color: white;
+}
+
+#shopping {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#shopping>li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#shopping>form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#selectFlight {
+  float: right;
+  margin-top: 15px;
+  width: 150px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: rgba(160, 211, 163);
+  border:none;
+  box-shadow: 0 4px 11px 1px rgba(0, 0, 0, 0.7);
+
+}
+
+#selectFlight:hover {
+  float: right;
+  margin-top: 15px;
+  width: 150px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #071235;
+  color: #c9f0ff;
+  border: none;
+  box-shadow: 0 4px 11px 1px rgba(0, 0, 0,);
+
+}
+
+.inp {
+  text-align: center;
+  border: none;
+  width: 150px;
+  height: 40px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-evenly;
+ 
+
+
+}
+
+
+
+/* #displayUD {
+  width: 350px;
+  flex-direction: column;
+  padding: 10px;
+  background-color: aliceblue;
+  border-radius: 10px;
+
+} */

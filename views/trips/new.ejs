@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs')-%> 
 <section id="addFlight">
-    <div>
+    <div id="newFlightDetails">
         <li><%= trip.origin %> </li>
          <li><%= trip.destination %> </li>
          <li><%= trip.depart %> </li>
@@ -12,18 +12,10 @@
     </form>
     <form action="/flights/flight-search" id="flightSearch" method="GET">
         <button id="close2" type="button">X</button>
-  <label>From:
-        <input type="text" name="originIATA" value="<%=trip.originIATA%>" readonly>
-      </label>
-      <label>To:
-        <input type="text" name="destinationIATA"  value ="<%=trip.destinationIATA%>" readonly>
-      </label>
-      <label>Depart:
-        <input type="datetime" name="dateOfDeparture" value="<%=new Date(trip.depart)%>" readonly>
-      </label>
-      <label>Return:
-        <input type="datetime" name="dateOfReturn" value="<%=new Date(trip.return)%>" readonly>
-      </label>
+        <input type="text" name="originIATA" value="<%=trip.originIATA%>" hidden>
+        <input type="text" name="destinationIATA"  value ="<%=trip.destinationIATA%>" hidden>
+        <input type="datetime" name="dateOfDeparture" value="<%=new Date(trip.depart)%>" hidden>
+        <input type="datetime" name="dateOfReturn" value="<%=new Date(trip.return)%>" hidden>
       <label>People:
         <input type="number" min="1" max="7" name="adults" required>
       </label>
