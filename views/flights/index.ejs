@@ -1,31 +1,6 @@
 <%-include('../partials/header.ejs')-%>
 <h2> My Flights </h2>
 <ul>
-
-  <% flights.forEach((flight)=> {%>
- 
-    <form action="/flights/<%=flight._id%>?_method=DELETE" method="POST">
-      <button type="submit">X</button>
-      </form>
-    <li>
-         <a href="/flights/<%=flight._id%>"><%= flight.origin %></a>
-    </li>
-    <li>
-        <a href="/flights/<%flight._id%>"><%= flight.destination %></a>
-    </li>
-    <li>
-        <a href="/flights/<%flight._id%>"><%= flight.depart %></a>
-    </li>
-    <li>
-        <a href="/flights/<%flight._id%>"><%= flight.return %></a>
-    </li>
-    <li>
-        <a href="/flights/<%flight._id%>"><%= flight.price %></a>
-    </li>
-  </form>
-    <%}) %>
-
-
 </ul>
 </div>
 

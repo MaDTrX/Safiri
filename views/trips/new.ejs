@@ -10,7 +10,7 @@
     <form action="/trips/<%=trip._id%>/edit" id="editTrip" method="GET">
     <button id="edit" type="submit">📝</button>
     </form>
-    <form action="/flights/flight-search" id="flightSearch" method="GET">
+    <form action="/flights/<%=trip._id%>/flight-search" id="flightSearch" method="GET">
         <button id="close2" type="button">X</button>
         <input type="text" name="originIATA" value="<%=trip.originIATA%>" hidden>
         <input type="text" name="destinationIATA"  value ="<%=trip.destinationIATA%>" hidden>

@@ -1,7 +1,8 @@
 const Trip = require('../models/trip.js')
-const Flight = require('../models/flight.js')
+
 var Amadeus = require('amadeus');
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
+const trips = require('./trips.js');
 
 var amadeus = new Amadeus({
     clientId: process.env.AMADEUS_CLIENT_ID,
@@ -32,16 +33,19 @@ function search (req, res) {
         maxPrice: req.query.maxPrice,
         max: '7'
     }).then(function (response) {
-        res.render('flights/shop', { response });
+        res.render('flights/shop', { response , id: req.params.id });
     }).catch(function (response) {
         res.send(response);
     });
 }
 function selectFlight (req, res) {
-    Flight.find({}, function (err, flights) {
-  const flight = new Flight(req.body)
-  flight.save((err) => {
-    res.render('flights', { flights })
+    console.log(req.params.id)
+    //console.log(flight)
+    Trip.findById(req.params.id, function (err, flights) {
+        flights.flights.push(req.body)
+        console.log(flights.flights)
+    flights.save((err) => {
+    res.redirect('/')
 })
     })
 }

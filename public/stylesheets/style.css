@@ -252,15 +252,6 @@ footer {
   text-decoration: none;
 }
 
-/* .hover {
-   display:none
- }
-
-ul:hover :where(.hover)  {
-  background:rgb(24, 23, 23);
-  display: flex
-} */
-
 @keyframes animate {
   0% {
     box-shadow: 0 0 0 0 rgba(38, 136, 249, 0.7)
@@ -285,6 +276,7 @@ h2 {
   justify-content: center;
   align-items: center;
   color: aqua
+  
 }
 
 #newFlightDetails {
@@ -296,6 +288,8 @@ h2 {
   list-style: none;
   background-color: #071235a3;
   text-align: center;
+  padding-top: 10px;
+  color: #00B7FF;
 
 }
 
@@ -363,18 +357,4 @@ h2 {
   border-radius: 50px;
   display: flex;
   justify-content: space-evenly;
- 
-
-
 }
-
-
-
-/* #displayUD {
-  width: 350px;
-  flex-direction: column;
-  padding: 10px;
-  background-color: aliceblue;
-  border-radius: 10px;
-
-} */

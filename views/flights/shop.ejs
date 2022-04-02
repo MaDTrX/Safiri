@@ -2,7 +2,7 @@
 
             <div id="flightShop">
                 <% response.data.forEach((flightOffers)=> { %>
-                    <form id="flightList" action="/flights/new" method="POST">
+                    <form id="flightList" action="/flights/<%=id%>/new" method="POST">
                         <input id="selectFlight"type="submit" value="Add Flight To Trip">
                         <label>Price:</label><input class="inp" type="text" name="price" value="$<%= flightOffers.price.total %>" readonly>
                         <% flightOffers.itineraries.forEach((it)=> { %>

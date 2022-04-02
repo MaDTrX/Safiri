@@ -1,6 +1,33 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+
+const flightSchema = new Schema({
+    price: {
+        type: String,
+    },
+    from: {
+        type: Array,
+    },
+    to: {
+        type: Array,
+        
+    },
+    depart: {
+        type: Array,
+         
+    },
+    arrival: {
+        type: Array,
+        
+    }, 
+  
+},
+{
+        timestamps: true
+})
+
+
 const tripSchema = new Schema({
     origin: {
         type: String,
@@ -27,7 +54,7 @@ const tripSchema = new Schema({
         required: true
     }, 
 
-    flights: [{type: Schema.Types.ObjectId, ref: 'Flight'}], 
+    flights: [flightSchema], 
    
     total: {
         type:String,
@@ -39,7 +66,7 @@ const tripSchema = new Schema({
 
     })
 
-module.exports = mongoose.model('TripCollection', tripSchema)
+module.exports = mongoose.model('Trips', tripSchema)
 
         // const hotelSchema = new Schema({
         //     from: {

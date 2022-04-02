@@ -88,6 +88,3 @@ Trip.findOneAndUpdate({_id: req.params.id},
 
 }
 
-// const newTrip = req.body
-// const trip = new Trip(req.body)
-//console.log(newTrip)
