@@ -18,12 +18,15 @@
     <h2> My Trips </h2>
     <div id="tripCard">
     <% trips.forEach((trip)=> {%>
-      <ul id="displayUD">
-        <li id="origin">
-             <a  href="/trips/<%=trip._id%>"><%= trip.origin %></a>
+      <ul class="displayUD" style="background-image: url('<%=trip.tripPhoto %>')">
+        <% let timeInMilliseconds = new Date(trip.return) - new Date(trip.depart) %>
+        <% let days = Math.floor(timeInMilliseconds/(1000*60*60*24)) %>
+        <h1><%=days%> DAYS IN <%=trip.destination.toUpperCase()%></h1>
+        <li id="origin" >
+             <a  href="/trips/<%=trip._id%>"><%= trip.origin.toUpperCase() %></a>
             </li>
             <li id="destination">
-              <a  href="/trips/<%trip._id%>"><%= trip.destination %></a>
+              <a  href="/trips/<%trip._id%>"><%= trip.destination.toUpperCase() %></a>
             </li>
             <li id="depart">
               <a  href="/trips/<%trip._id%>"><%= trip.depart %></a>
@@ -31,9 +34,17 @@
             <li id="return">
               <a  href="/trips/<%trip._id%>"><%= trip.return %></a>
             </li>
-            <li id="total">
+            <% if (trip.flights.length > 0) { %>
+            <li id="price">
               <a  href="/trips/<%trip._id%>"><%= trip.flights[0].price %></a>
             </li>
+            <li id="flightCard">
+              <a  href="/trips/<%trip._id%>"><%= trip.flights[0].depart%></a>
+            </li>
+            <li id="flightCard">
+              <a  href="/trips/<%trip._id%>"><%= trip.flights[0].arrival%></a>
+            </li>
+            <%}%>
             <li id="budget">
               <a  href="/trips/<%trip._id%>"><%= trip.total %></a>
             </li>

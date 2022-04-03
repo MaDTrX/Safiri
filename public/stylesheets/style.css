@@ -358,3 +358,33 @@ h2 {
   display: flex;
   justify-content: space-evenly;
 }
+/* }
+.displayUD {
+  
+  transition: top ease 0.5s;
+ } */
+.displayUD > li {
+  display:none;
+}
+.displayUD  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  font-weight: 900;
+  font-style: italic;
+  text-align: center;
+  font-size: large;
+  height: 200px
+}
+/* .displayUD:hover > li{
+  visibility: visible;
+  background-color: #cbd5d994;
+  height: 100px;
+  width: 90%;
+  border-radius: 10px;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+} */
+

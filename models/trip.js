@@ -55,6 +55,8 @@ const tripSchema = new Schema({
     }, 
 
     flights: [flightSchema], 
+    
+    tripPhoto : String,
    
     total: {
         type:String,
