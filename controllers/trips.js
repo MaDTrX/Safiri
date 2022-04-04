@@ -1,7 +1,7 @@
 const Trip = require('../models/trip.js')
 var Amadeus = require('amadeus');
 const fetch = require('node-fetch');
-const trip = require('../models/trip.js');
+const User = require('../models/user.js');
 
 const amadeus = new Amadeus({
     clientId: process.env.AMADEUS_CLIENT_ID,
@@ -22,9 +22,9 @@ module.exports = {
 }
 
 function index(req, res) {
-    Trip.find({}, function (err, trips) {
+    User.find({}, function (err, user) {
         //console.log(trips)
-        res.render('index', { trips })
+        res.render('index', { trips: user.trips })
     })
 }
 

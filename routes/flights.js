@@ -10,7 +10,7 @@ const amadeus = new Amadeus({
 })
 
 
-router.get(`/:id/flight-search`,isLoggedIn.apply, flightsCtrl.search)
+router.get(`/:id/flight-search`,isLoggedIn, flightsCtrl.search)
 router.post('/:id/new',isLoggedIn, flightsCtrl.selectFlight)
 router.delete('/:id',isLoggedIn, flightsCtrl.delete)
 
