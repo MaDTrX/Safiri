@@ -22,9 +22,9 @@ module.exports = {
 }
 
 function index(req, res) {
-    User.find({}, function (err, user) {
-        //console.log(trips)
-        res.render('index', { trips: user.trips })
+    Trip.find({}, function (err, user) {
+        console.log(user)
+        res.render('index', { trips: user })
     })
 }
 
