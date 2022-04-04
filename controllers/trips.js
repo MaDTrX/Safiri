@@ -22,7 +22,7 @@ module.exports = {
 }
 
 function index(req, res) {
-    Trip.find({}, function (err, user) {
+    User.find({}, function (err, user) {
         console.log(user)
         res.render('index', { trips: user })
     })
