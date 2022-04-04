@@ -14,7 +14,7 @@
     <input type="datetime-local" name="return">
     <input id="addBtn" type="submit" value="Add Trip">
   </form>
-  <% if (user) { %>
+  <% if (user && user.trips.length > 0) { %>
     <h2> My Trips </h2>
     <div id="tripCard">
     <% trips.forEach((trip)=> {%>
