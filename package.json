@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "npm run build",
     "start": "node ./bin/www",
-    "serve": " nodemon www.js"
+    "serve": " nodemon www.js",
+    "web": "node index.js",
+    "build":"webpack"
   },
   "dependencies": {
     "amadeus": "^5.7.1",

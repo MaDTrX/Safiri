@@ -14,79 +14,20 @@
     <input type="datetime-local" name="return">
     <input id="addBtn" type="submit" value="Add Trip">
   </form>
-  
+  <% if (user) { %>
     <h2> My Trips </h2>
     <div id="tripCard">
     <% trips.forEach((trip)=> {%>
       <ul class="displayUD" style="background-image: url('<%=trip.tripPhoto %>')">
         <% let timeInMilliseconds = new Date(trip.return) - new Date(trip.depart) %>
         <% let days = Math.floor(timeInMilliseconds/(1000*60*60*24)) %>
-        <h1><%=days%> DAYS IN <%=trip.destination.toUpperCase()%></h1>
-        <li id="origin" >
-             <a  href="/trips/<%=trip._id%>"><%= trip.origin.toUpperCase() %></a>
-            </li>
-            <li id="destination">
-              <a  href="/trips/<%trip._id%>"><%= trip.destination.toUpperCase() %></a>
-            </li>
-            <li id="depart">
-              <a  href="/trips/<%trip._id%>"><%= trip.depart %></a>
-            </li>
-            <li id="return">
-              <a  href="/trips/<%trip._id%>"><%= trip.return %></a>
-            </li>
-            <% if (trip.flights.length > 0) { %>
-            <li id="price">
-              <a  href="/trips/<%trip._id%>"><%= trip.flights[0].price %></a>
-            </li>
-            <li id="flightCard">
-              <a  href="/trips/<%trip._id%>"><%= trip.flights[0].depart%></a>
-            </li>
-            <li id="flightCard">
-              <a  href="/trips/<%trip._id%>"><%= trip.flights[0].arrival%></a>
-            </li>
-            <%}%>
-            <li id="budget">
-              <a  href="/trips/<%trip._id%>"><%= trip.total %></a>
-            </li>
-            <li id="edit" class="hover">
-            <form  action="/trips/<%=trip._id%>/edit" method="GET">
-              <button type="submit">📝</button>
-             </form>
-            </li>
-            <li  id="delete" class="hover">
-            <form  action="/trips/<%=trip._id%>?_method=DELETE" method="POST">
-              <button  type="submit">💀</button>
-            </form>
-            </li>
-            
+        <h1><a  href="/trips/<%=trip._id%>"><%=days%> DAYS IN <%=trip.destination.toUpperCase()%></a></h1>
       </ul>
         <%}) %>
   </div>
+      
+  <%}%>
+  
   
 
 <%-include('./partials/footer.ejs')-%>
-
-<!-- <form action="/flight-search"  method="GET">
-  <label>From:
-        <input type="text" name="originCode">
-      </label>
-      <label>To:
-        <input type="text" name="destinationCode">
-      </label>
-      <label>Departs:
-        <input type="text" name="dateOfDeparture">
-      </label>
-      <label>Return:
-        <input type="text" name="dateOfReturn">
-      </label>
-      <label>People:
-        <input type="number" min="1" max="7" name="adults">
-      </label>
-      <input type="submit" value="Search Flights">
-    </form> 
-    <form action="/api/hotels"  method="GET">
-      <label>From:
-            <input type="text" name="cityCode">
-          </label>
-          <input type="submit" value="Search Hotels">
-        </form>  -->

@@ -1,0 +1,42 @@
+<%-include('../partials/header.ejs')-%>
+<div>
+    <li id="origin" >
+      <a  href="/trips/<%=trip._id%>"><%= trip.origin.toUpperCase() %></a>
+     </li>
+     <li id="destination">
+       <a  href="/trips/<%trip._id%>"><%= trip.destination.toUpperCase() %></a>
+     </li>
+     <li id="depart">
+       <a  href="/trips/<%trip._id%>"><%= trip.depart %></a>
+     </li>
+     <li id="return">
+       <a  href="/trips/<%trip._id%>"><%= trip.return %></a>
+     </li>
+     <% if (trip.flights.length > 0) { %>
+     <li id="price">
+       <a  href="/trips/<%trip._id%>"><%= trip.flights[0].price %></a>
+     </li>
+     <li id="flightCard">
+       <a  href="/trips/<%trip._id%>"><%= trip.flights[0].depart%></a>
+     </li>
+     <li id="flightCard">
+       <a  href="/trips/<%trip._id%>"><%= trip.flights[0].arrival%></a>
+     </li>
+     <%}%>
+     <li id="budget">
+       <a  href="/trips/<%trip._id%>"><%= trip.total %></a>
+     </li>
+     <li id="edit" class="hover">
+     <form  action="/trips/<%=trip._id%>/edit" method="GET">
+       <button type="submit">📝</button>
+      </form>
+     </li>
+     <li  id="delete" class="hover">
+     <form  action="/trips/<%=trip._id%>?_method=DELETE" method="POST">
+       <button  type="submit">💀</button>
+     </form>
+     </li>
+  </div>
+
+
+<%-include('../partials/footer.ejs')-%>

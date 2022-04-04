@@ -34,7 +34,9 @@ function newTrip(req, res) {
 }
 
 function show(req, res) {
+    console.log(req.params.id)
     Trip.findById(req.params.id, (err, trip) => {
+        console.log(trip)
         res.render('trips/show', { trip })
     })
 
