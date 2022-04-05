@@ -4,5 +4,5 @@ Tech Used:
 Html/CSS  
 Express js  
 Amadeus Api  
-PLaces Api  
+Places Api  
 Node js  
