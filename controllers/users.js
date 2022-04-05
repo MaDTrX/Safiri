@@ -27,11 +27,12 @@ function request (req, res) {
             console.log('hits!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             res.render('friends/search', {Warn: "Send Request already sent!!"})
         }
-    }
+    
         user.requests.push(req.user._id)
         user.save()
         console.log("austin test", user.requests)
         res.redirect('/')
+    }
     
     })
 }
