@@ -10,7 +10,7 @@ var amadeus = new Amadeus({
   clientSecret: process.env.AMADEUS_SECRET
 });
 
-router.get('/', tripsCtrl.index)
+router.get('/',isLoggedIn, tripsCtrl.index)
 router.get('/home', (req, res) => {
   res.redirect('/')
 })
@@ -39,15 +39,3 @@ router.get('/logout', function(req, res){
 });
 
 module.exports = router;
-
-  // router.get(`/api/hotels`, (req, res) => {
-  //   const cityCode = req.query.originCode;
-  //    amadeus.shopping.hotelOffers.get({
-  //     cityCode: "MAD"
-    
-  // }).then(function (response) {
-  //   res.send(response);
-  // }).catch(function (response) {
-  //   res.send(response);
-  // })
-  // });

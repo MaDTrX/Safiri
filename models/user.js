@@ -12,7 +12,7 @@ const userSchema = new Schema({
     email: String,
     avatar: String,
     banned: Boolean,
-    trips: [{type: Schema.Types.ObjectId, ref: 'Trips'}],
+    
   }, {
     timestamps: true
   });

@@ -22,9 +22,9 @@ module.exports = {
 }
 
 function index(req, res) {
-    User.find({}, function (err, user) {
-        console.log(user)
-        res.render('index', { trips: user })
+Trip.find({user: req.user._id}, function (err, trips) {
+        console.log(trips)
+        res.render('index', { trips})
     })
 }
 
@@ -65,7 +65,8 @@ async function create(req, res) {
         destinationIATA: destination.data[0].iataCode,
         depart: req.body.depart,
         return: req.body.return,
-        tripPhoto: url
+        tripPhoto: url,
+        user: req.user._id
     }
     //console.log(trip)
     Trip.create(trip, (err, trip) => {

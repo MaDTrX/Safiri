@@ -14,10 +14,10 @@
     <input type="datetime-local" name="return">
     <input id="addBtn" type="submit" value="Add Trip">
   </form>
-  <% if (user && user.length > 0) { %>
+  <% if (user ) { %>
     <h2> My Trips </h2>
     <div id="tripCard">
-    <% trips.trips.forEach((trip)=> {%>
+    <% trips.forEach((trip)=> {%>
       <ul class="displayUD" style="background-image: url('<%=trip.tripPhoto %>')">
         <% let timeInMilliseconds = new Date(trip.return) - new Date(trip.depart) %>
         <% let days = Math.floor(timeInMilliseconds/(1000*60*60*24)) %>
