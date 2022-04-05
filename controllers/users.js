@@ -12,7 +12,10 @@ module.exports = {
 function index(req, res) {
     if (req.user) {
 User.find({}, function (err, users) {
-        res.render('friends/search', {users, notice:req.user.requests.length, requests: req.user.requests, friends:req.user.friends})
+    let userDisplay = users.filter(user => user.name != req.user.name)
+    console.log(userDisplay)
+    console.log(req.user._id)
+        res.render('friends/search', {userDisplay, notice:req.user.requests.length, requests: req.user.requests, friends:req.user.friends})
     })
 } else {
         res.render('index')
@@ -33,8 +36,8 @@ function sendRequest (req, res) {
 }
 function respondToRequest (req, res) {
     User.findById(req.params.id, (err, requestor) => {
-        console.log('req', requestor)
-        console.log('user ', req.user)
+        //console.log('req', requestor)
+        //console.log('user ', req.user)
     requestor.friends.push(req.user._id)
     let friends = req.user.friends.push(req.params.id)
     let requestIdx = req.user.requests.indexOf(req.params.id)

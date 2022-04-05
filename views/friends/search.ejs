@@ -1,11 +1,11 @@
 <%-include('../partials/header.ejs')-%>
 
 <h2> Users </h2>
-<% users.forEach((user)=> {%>
+<% userDisplay.forEach((user)=> {%>
     <ul>
-    <form action="/users/<%= user._id %>" method="POST"><button  type="submit" class="request">Send Friend Request</button></form>
-    <li><img src="<%=user.avator%>"></li>
-    <li><%=user.name%></li>
+        <li><img src="<%=user.avator%>"></li>
+        <li><%=user.name%></li>
+        <form action="/users/<%= user._id %>" method="POST"><button  type="submit" class="request">Send Friend Request</button></form>
     </ul>
 <%}) %>
 
