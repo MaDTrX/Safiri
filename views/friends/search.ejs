@@ -4,10 +4,17 @@
 <% users.forEach((user)=> {%>
     <ul>
     <form action="/users/<%= user._id %>" method="POST"><button  type="submit" class="request">Send Friend Request</button></form>
-    <li><%=user.avator%></li>
+    <li><img src="<%=user.avator%>"></li>
     <li><%=user.name%></li>
     </ul>
 <%}) %>
-<h1>Friend Request</h1>
+
+<h1>Friend Requests</h1>
 <p><%=notice %></p>
+<% requests.forEach((request) => {%>
+<ul>
+    <form action="/users/<%= request %>/friends" method="POST"><button  type="submit" class="request">Accept Friend Request</button></form>
+<li><%= request %></li>
+</ul>
+<%}) %>
 <%-include('../partials/footer.ejs')-%>

@@ -12,7 +12,7 @@ const userSchema = new Schema({
     email: String,
     avatar: String,
     banned: Boolean,
-    friends: Array,
+    friends: [String],
     requests: [String],
   }, {
     timestamps: true

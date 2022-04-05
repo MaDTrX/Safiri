@@ -6,6 +6,7 @@ const usersCtrl = require('../controllers/users.js')
 
    
 router.get('/',isLoggedIn, usersCtrl.index)
-router.post('/:id',isLoggedIn, usersCtrl.request)
+router.post('/:id',isLoggedIn, usersCtrl.sendRequest)
+router.post('/:id/friends',isLoggedIn, usersCtrl.respondToRequest)
 
 module.exports = router;
