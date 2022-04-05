@@ -2,6 +2,24 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 
+const companionSchema = new Schema({
+    name: {
+        type: String,
+    },
+    avatar: {
+        type: Array,
+    },
+    
+    arrival: {
+        type: Array,
+        
+    }, 
+  
+},
+{
+        timestamps: true
+})
+
 const flightSchema = new Schema({
     price: {
         type: String,
@@ -55,7 +73,7 @@ const tripSchema = new Schema({
     }, 
 
     flights: [flightSchema], 
-    
+    companions: [companionSchema],
     tripPhoto : String,
     user: String,
    
