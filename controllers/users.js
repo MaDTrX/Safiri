@@ -28,7 +28,11 @@ function request (req, res) {
         console.log("austin test", user.requests)
         res.redirect('/')
         } else {
-            res.send({hi:"hey"})
+           if (user.requests.includes(id => id === req.user._id))
+                    res.send({hi:"hey"})
+
+            }
+            
         }
     })
 }
