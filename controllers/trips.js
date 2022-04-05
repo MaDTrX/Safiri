@@ -24,7 +24,7 @@ module.exports = {
 function index(req, res) {
     if (req.user) {
 Trip.find({user: req.user._id}, function (err, trips) {
-        console.log(trips)
+        //console.log(trips)
         res.render('index', { trips})
     })
 } else {
@@ -38,9 +38,9 @@ function newTrip(req, res) {
 }
 
 function show(req, res) {
-    console.log(req.params.id)
+    //console.log(req.params.id)
     Trip.findById(req.params.id, (err, trip) => {
-        console.log(trip)
+       // console.log(trip)
         res.render('trips/show', { trip })
     })
 
@@ -83,7 +83,7 @@ async function create(req, res) {
 }
 
 async function basura(req, res) {
-    console.log(req.params.id)
+    //console.log(req.params.id)
     await Trip.deleteOne({ _id: req.params.id })
     res.redirect('/')
 }
@@ -96,7 +96,7 @@ function edit(req, res) {
 }
 
 function update (req, res) {
-console.log(req.body)
+//console.log(req.body)
 Trip.findOneAndUpdate({_id: req.params.id}, 
     {
         origin: req.body.origin,
