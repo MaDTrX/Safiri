@@ -1,8 +1,8 @@
 <%-include('../partials/header.ejs')-%>
 <h2> Users </h2>
-<% if(warn) { %>
+
 <h1><%= warn %> </h1> 
-<%}%>
+
 <% users.forEach((user)=> {%>
     <ul>
     <form action="/users/<%= user._id %>" method="POST"><button  type="submit" class="request">Send Friend Request</button></form>

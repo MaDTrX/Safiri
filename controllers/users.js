@@ -12,7 +12,7 @@ function index(req, res) {
     if (req.user) {
 User.find({}, function (err, users) {
         
-        res.render('friends/search', {users})
+        res.render('friends/search', {users, warn: "Add Friends!"})
     })
 } else {
         res.render('index')
