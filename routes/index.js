@@ -10,7 +10,7 @@ var amadeus = new Amadeus({
   clientSecret: process.env.AMADEUS_SECRET
 });
 
-router.get('/',isLoggedIn, tripsCtrl.index)
+router.get('/', tripsCtrl.index)
 router.get('/home', (req, res) => {
   res.redirect('/')
 })

@@ -22,10 +22,14 @@ module.exports = {
 }
 
 function index(req, res) {
+    if (req.user) {
 Trip.find({user: req.user._id}, function (err, trips) {
         console.log(trips)
         res.render('index', { trips})
     })
+} else {
+        res.render('index')
+    }
 }
 
 
