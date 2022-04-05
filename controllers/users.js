@@ -11,8 +11,7 @@ module.exports = {
 function index(req, res) {
     if (req.user) {
 User.find({}, function (err, users) {
-        
-        res.render('friends/search', {users})
+        res.render('friends/search', {users, notice:req.user.requests.length})
     })
 } else {
         res.render('index')
@@ -20,18 +19,14 @@ User.find({}, function (err, users) {
 }
 function request (req, res) {
     User.findById(req.params.id, (err, user) => {
-        // if (user.requests.length === 0) {
-        // console.log("test id REQUEST", user.requests)
-        // // console.log("test2", req.params.id)
-        // user.requests.push(req.user._id)
-        // user.save()
-        // console.log("austin test", user.requests)
-        // res.redirect('/')
-        // } else
-         if (user.requests.includes(id => id === req.user._id)) {
-                    res.send({hi:"hey"})
-
-            }
+        if (user.requests.includes(req.user._id)){
+            console.log('hi')
+            res.send({Alert:"Friend request already Sent!"})   
+        } else {
+        user.requests.push(req.user._id)
+        user.save()
+        res.redirect('/')
+        }
             
         })
     

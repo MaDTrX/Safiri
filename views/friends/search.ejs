@@ -1,8 +1,6 @@
 <%-include('../partials/header.ejs')-%>
+
 <h2> Users </h2>
-
-
-
 <% users.forEach((user)=> {%>
     <ul>
     <form action="/users/<%= user._id %>" method="POST"><button  type="submit" class="request">Send Friend Request</button></form>
@@ -10,4 +8,6 @@
     <li><%=user.name%></li>
     </ul>
 <%}) %>
+<h1>Friend Request</h1>
+<p><%=notice %></p>
 <%-include('../partials/footer.ejs')-%>
