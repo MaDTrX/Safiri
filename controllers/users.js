@@ -23,14 +23,14 @@ function request (req, res) {
         console.log("test id REQUEST", user.requests)
         // console.log("test2", req.params.id)
         for(let i = 0; i < user.requests.length; i++) {
-        if (user.requests[i] == req.user._id) {
-            res.send('friends/search', {Warn: "Send Request already sent!!"})
+        if (user.requests[i] !== req.user._id) {
+            
+            user.requests.push(req.user._id)
+            user.save()
+            console.log("austin test", user.requests)
+            res.redirect('/')
         }
-    }
-        user.requests.push(req.user._id)
-        user.save()
-        console.log("austin test", user.requests)
-        res.redirect('/')
+        res.render('friends/search', {Warn: "Send Request already sent!!"})
     
     })
 }
