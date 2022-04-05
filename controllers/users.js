@@ -27,12 +27,11 @@ function request (req, res) {
         user.save()
         console.log("austin test", user.requests)
         res.redirect('/')
-        } else {
-           if (user.requests.includes(id => id === req.user._id))
+        } else if (user.requests.includes(id => id === req.user._id)) {
                     res.send({hi:"hey"})
 
             }
             
-        }
-    })
+        })
+    
 }
