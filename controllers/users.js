@@ -12,7 +12,7 @@ function index(req, res) {
     if (req.user) {
 User.find({}, function (err, users) {
         
-        res.render('friends/search', {users, warn: "Add Friends!"})
+        res.render('friends/search', {users})
     })
 } else {
         res.render('index')
@@ -20,17 +20,15 @@ User.find({}, function (err, users) {
 }
 function request (req, res) {
     User.findById(req.params.id, (err, user) => {
+        if (user.requests.length === 0) {
         console.log("test id REQUEST", user.requests)
         // console.log("test2", req.params.id)
-        for(let i = 0; i < user.requests.length; i++) {
-        if (user.requests[i] !== req.user._id) {
-            user.requests.push(req.user._id)
-            user.save()
-            console.log("austin test", user.requests)
-            res.redirect('/')
+        user.requests.push(req.user._id)
+        user.save()
+        console.log("austin test", user.requests)
+        res.redirect('/')
+        } else {
+            res.send({hi:"hey"})
         }
-        res.redirect('/friends/search')
-    
-    }
-})
+    })
 }
