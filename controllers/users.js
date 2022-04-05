@@ -23,6 +23,7 @@ function request (req, res) {
         console.log("test id REQUEST", user.requests)
         // console.log("test2", req.params.id)
         user.requests.push(req.user._id)
+        user.save()
         console.log("austin test", user.requests)
         res.redirect('/')
     })
