@@ -21,6 +21,6 @@ User.find({}, function (err, users) {
 function request (req, res) {
     User.findById(req.params.id, (err, user) => {
         user.requests.push(req.user)
-        res.redirect('/index')
+        res.redirect('/')
     })
 }

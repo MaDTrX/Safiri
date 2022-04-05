@@ -2,7 +2,7 @@
 <h2> Users </h2>
 <% users.forEach((user)=> {%>
     <ul>
-    <a href="/users/<%= user._id %>"><button class="request">Send Friend Request</button></a>
+    <form action="/users/<%= user._id %>" method="POST"><button  type="submit" class="request">Send Friend Request</button></form>
     <li><%=user.avator%></li>
     <li><%=user.name%></li>
     </ul>
