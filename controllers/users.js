@@ -29,7 +29,7 @@ function request (req, res) {
             console.log("austin test", user.requests)
             res.redirect('/')
         }
-        res.render('friends/search', {Warn: "Send Request already sent!!"})
+        res.redirect('/friends/search')
     
     }
 })
