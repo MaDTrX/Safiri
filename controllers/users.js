@@ -24,6 +24,7 @@ function request (req, res) {
         // console.log("test2", req.params.id)
         for(let i = 0; i < user.requests.length; i++) {
         if (user.requests[i] === req.user._id) {
+            console.log('hits!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             res.render('friends/search', {Warn: "Send Request already sent!!"})
         }
     }
