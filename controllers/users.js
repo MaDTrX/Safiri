@@ -20,10 +20,10 @@ User.find({}, function (err, users) {
 }
 function request (req, res) {
     User.findById(req.params.id, (err, user) => {
-        console.log("test1", req.user)
-        console.log("test2", req.params.id)
+        console.log("test id", req.user._id)
+        // console.log("test2", req.params.id)
         user.requests.push(req.user)
-        console.log("test3", user.requests)
+        console.log("austin test", user.name)
         res.redirect('/')
     })
 }
