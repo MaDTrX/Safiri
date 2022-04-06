@@ -13,8 +13,7 @@ function index(req, res) {
     if (req.user) {
 User.find({}, function (err, users) {
     let userDisplay = users.filter(user => user.name != req.user.name)
-    console.log(userDisplay)
-    console.log(req.user._id)
+   
         res.render('friends/search', {userDisplay, notice:req.user.requests.length, requests: req.user.requests, friends:req.user.friends})
     })
 } else {
@@ -36,10 +35,10 @@ function sendRequest (req, res) {
 }
 function respondToRequest (req, res) {
     User.findById(req.params.id, (err, requestor) => {
-        //console.log('req', requestor)
-        //console.log('user ', req.user)
-    requestor.friends.push(req.user._id)
-    let friends = req.user.friends.push(req.params.id)
+        console.log('req', requestor)
+        console.log('user ', req.user)
+    requestor.friends.push(req.user)
+    let friends = req.user.friends.push(requestor)
     let requestIdx = req.user.requests.indexOf(req.params.id)
     let accept = req.user.requests.splice(requestIdx, 1)
     req.user.save()
