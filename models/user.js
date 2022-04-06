@@ -12,8 +12,8 @@ const userSchema = new Schema({
     email: String,
     avatar: String,
     banned: Boolean,
-    friends: [String],
-    requests: [String],
+    friends: Array,
+    requests: Array
   }, {
     timestamps: true
   });

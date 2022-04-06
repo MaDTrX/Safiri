@@ -6,43 +6,63 @@ const User = require('../models/user.js');
 module.exports = {
     index,
     sendRequest,
-    respondToRequest,
+    acceptRequest,
+    denyRequest,
 }
 
 function index(req, res) {
     if (req.user) {
-User.find({}, function (err, users) {
-    let userDisplay = users.filter(user => user.name != req.user.name)
-   
-        res.render('friends/search', {userDisplay, notice:req.user.requests.length, requests: req.user.requests, friends:req.user.friends})
-    })
-} else {
+        User.find({}, function (err, users) {
+            let noNewFriends = []
+            for (let i = 0; i < users.length; i++) {
+                if (req.user.friends.length === 0) {
+                    noNewFriends.push(users[i])
+                } else {
+                    for (let j = 0; j < req.user.friends.length; j++) {
+                        if (users[i].name !== req.user.friends[j].name) {
+                            noNewFriends.push({ _id: users[i]._id, name: users[i].name, avatar: users[i].avatar })
+                        }
+                    }
+                }
+            }
+            console.log(noNewFriends)
+            let userDisplay = noNewFriends.filter(user => user.name !== req.user.name)
+            res.render('friends/search', { userDisplay, notice: req.user.requests.length, requests: req.user.requests, friends: req.user })
+        })
+    } else {
         res.render('index')
     }
 }
-function sendRequest (req, res) {
+function sendRequest(req, res) {
     User.findById(req.params.id, (err, user) => {
-        if (user.requests.includes(req.user._id)){
-            console.log('hi')
-            res.send({Alert:"Friend request already Sent!"})   
+        if (user.requests.includes(req.user._id)) {
+            res.send({ Alert: "Friend request already Sent!" })
         } else {
-        user.requests.push(req.user._id)
-        user.save()
-        res.redirect('/')
+            user.requests.push({ _id: req.user._id, name: req.user.name, avatar: req.user.avatar })
+            user.save()
+            res.redirect('/')
         }
-            
-        })
+
+    })
 }
-function respondToRequest (req, res) {
+function acceptRequest(req, res) {
     User.findById(req.params.id, (err, requestor) => {
-        console.log('req', requestor)
-        console.log('user ', req.user)
-    requestor.friends.push(req.user)
-    let friends = req.user.friends.push(requestor)
-    let requestIdx = req.user.requests.indexOf(req.params.id)
-    let accept = req.user.requests.splice(requestIdx, 1)
-    req.user.save()
-    requestor.save()    
-    res.redirect('/friends/search')
-})
+        requestor.friends.push({ _id: req.user._id, name: req.user.name, avatar: req.user.avatar })
+        let friend = req.user.friends.push({ _id: req.user._id, name: requestor.name, avatar: requestor.avatar })
+        let requestIdx = req.user.requests.indexOf(req.params.id)
+        let accept = req.user.requests.splice(requestIdx, 1)
+        req.user.save()
+        requestor.save()
+        res.redirect('/')
+    })
+}
+
+function denyRequest(req, res) {
+    User.findById(req.params.id, (err, requestor) => {
+        let requestIdx = req.user.requests.indexOf(req.params.id)
+        let deny = req.user.requests.splice(requestIdx, 1)
+        req.user.save()
+        requestor.save()
+        res.redirect('/')
+    })
 }

@@ -10,8 +10,8 @@ const amadeus = new Amadeus({
 })
 
 
-router.get(`/:id/flight-search`,isLoggedIn, flightsCtrl.search)
-router.post('/:id/new',isLoggedIn, flightsCtrl.selectFlight)
-router.delete('/:id',isLoggedIn, flightsCtrl.delete)
+router.get(`/:id/flight-search`, flightsCtrl.search)
+router.post('/:id/new', flightsCtrl.selectFlight)
+router.delete('/:id', flightsCtrl.delete)
 
 module.exports = router

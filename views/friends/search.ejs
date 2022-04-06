@@ -13,14 +13,17 @@
 <h1><%=notice %></h1>
 <% requests.forEach((request) => {%>
 <ul>
-    <form action="/users/<%= request %>/friends" method="POST"><button  type="submit" class="request">Accept Friend Request</button></form>
-<li><%= request %></li>
+    <form action="/users/<%= request._id %>/friends" method="POST"><button class="request">Accept Friend Request</button></form>
+    <form action="/users/<%= request._id %>/friends_method=DELETE" method="POST"><button class="request">Deny Friend Request</button></form>
+<li><%= request.name %></li>
+<img src='<%=request.avatar %>'>
 </ul>
 <%}) %>
 <h1>My Friends</h1>
-<% friends.forEach((friend) => {%>
+<% friends.friends.forEach((friend) => {%>
     <ul>
     <li><%= friend.name %></li>
+    <img src='<%=friend.avatar %>'>
 </ul>
 <%}) %>
 <%-include('../partials/footer.ejs')-%>
