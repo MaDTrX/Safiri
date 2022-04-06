@@ -13,7 +13,7 @@ function index(req, res) {
         User.find({}, function (err, users) {
             let noNewFriends = []
             if (req.user.friends.length === 0) {
-                noNewFriends.push(users[i])
+                noNewFriends.push(users)
                 let userDisplay = noNewFriends.filter(user => user.name !== req.user.name)
                 res.render('friends/search', { userDisplay, notice: req.user.requests.length, requests: req.user.requests, friends: req.user })
             } 
@@ -23,7 +23,6 @@ function index(req, res) {
                             noNewFriends.push({ _id: users[i]._id, name: users[i].name, avatar: users[i].avatar })
                         }
                     }
-                
             }
             console.log(noNewFriends)
             let userDisplay = noNewFriends.filter(user => user._id !== req.user._id)
