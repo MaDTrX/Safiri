@@ -17,14 +17,14 @@ function index(req, res) {
                     noNewFriends.push(users[i])
                 } else {
                     for (let j = 0; j < req.user.friends.length; j++) {
-                        if (users[i].name !== req.user.friends[j].name) {
+                        if (users[i].googleId === req.user.friends[j].googleId) {
                             noNewFriends.push({ _id: users[i]._id, name: users[i].name, avatar: users[i].avatar })
                         }
                     }
                 }
             }
-            console.log(noNewFriends)
-            let userDisplay = noNewFriends.filter(user => user.name !== req.user.name)
+            //console.log(noNewFriends)
+            let userDisplay = noNewFriends.filter(user => user.googleId !== req.user.googleId)
             res.render('friends/search', { userDisplay, notice: req.user.requests.length, requests: req.user.requests, friends: req.user })
         })
 }
@@ -42,8 +42,8 @@ function sendRequest(req, res) {
 }
 function acceptRequest(req, res) {
     User.findById(req.params.id, (err, requestor) => {
-        requestor.friends.push({ _id: req.user._id, name: req.user.name, avatar: req.user.avatar })
-        let friend = req.user.friends.push({ _id: req.user._id, name: requestor.name, avatar: requestor.avatar })
+        requestor.friends.push({ _id: requestor._id, goog: requestor.googleId, name: req.user.name, avatar: req.user.avatar })
+        let friend = req.user.friends.push({ _id: req.user._id, goog: req.user.googleId, name: requestor.name, avatar: requestor.avatar })
         let requestIdx = req.user.requests.indexOf(req.params.id)
         let accept = req.user.requests.splice(requestIdx, 1)
         req.user.save()
