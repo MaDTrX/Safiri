@@ -33,7 +33,7 @@ function search (req, res) {
         maxPrice: req.query.maxPrice,
         max: '7'
     }).then(function (response) {
-        res.render('flights/shop', { response , id: req.params.id });
+        res.render('flights/shop', { response , id: req.params.id, notice: req.user.friends.length });
     }).catch(function (response) {
         res.send(response);
     });

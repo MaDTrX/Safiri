@@ -25,7 +25,7 @@ function index(req, res) {
     if (req.user) {
 Trip.find({user: req.user._id}, function (err, trips) {
         //console.log(trips)
-        res.render('index', { trips})
+        res.render('index', {trips, notice: req.user.requests.length})
     })
 } else {
         res.render('index')
@@ -34,14 +34,14 @@ Trip.find({user: req.user._id}, function (err, trips) {
 
 
 function newTrip(req, res) {
-    res.render('trips/new')
+    res.render('trips/new', {notice: req.user.requests.length})
 }
 
 function show(req, res) {
     //console.log(req.params.id)
     Trip.findById(req.params.id, (err, trip) => {
        // console.log(trip)
-        res.render('trips/show', { trip })
+        res.render('trips/show', {trip, notice: req.user.requests.length})
     })
 
 }
@@ -77,7 +77,7 @@ async function create(req, res) {
         //console.log("hi",trip)
         if (err) return res.redirect('/')
         trip.save()
-        res.render('trips/new', { trip })
+        res.render('trips/new', {trip, notice: req.user.requests.length})
     })
 
 }
@@ -91,7 +91,7 @@ function edit(req, res) {
     //console.log(req.params.id)
     Trip.findById({_id: req.params.id}, (err, trip) => {
        // console.log(trip)
-    res.render('trips/edit', {trip})
+    res.render('trips/edit', {trip, notice: req.user.requests.length})
 })
 }
 

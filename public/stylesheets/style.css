@@ -12,7 +12,7 @@ body {
   font-size: 16px;
   margin: 0 auto;
   background-color: #091643;
-  
+
 }
 
 ul {
@@ -33,11 +33,13 @@ ul {
   box-shadow: 0 4px 11px 1px rgba(0, 0, 0, 0.459);
 
 }
-h1 > a {
+
+h1>a {
   text-decoration: none;
   color: azure;
 }
-h1 > a:hover {
+
+h1>a:hover {
   text-decoration: none;
   font-style: italic;
   color: #091643;
@@ -285,7 +287,6 @@ h2 {
   justify-content: center;
   align-items: center;
   color: aqua
-  
 }
 
 #newFlightDetails {
@@ -330,7 +331,6 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 #selectFlight {
@@ -340,9 +340,8 @@ h2 {
   height: 40px;
   border-radius: 50px;
   background-color: rgba(160, 211, 163);
-  border:none;
+  border: none;
   box-shadow: 0 4px 11px 1px rgba(0, 0, 0, 0.7);
-
 }
 
 #selectFlight:hover {
@@ -354,7 +353,7 @@ h2 {
   background-color: #071235;
   color: #c9f0ff;
   border: none;
-  box-shadow: 0 4px 11px 1px rgba(0, 0, 0,);
+  box-shadow: 0 4px 11px 1px rgba(0, 0, 0, );
 
 }
 
@@ -367,15 +366,12 @@ h2 {
   display: flex;
   justify-content: space-evenly;
 }
-/* }
-.displayUD {
-  
-  transition: top ease 0.5s;
- } */
-.displayUD > li {
-  display:none;
+
+.displayUD>li {
+  display: none;
 }
-.displayUD  {
+
+.displayUD {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -386,14 +382,35 @@ h2 {
   font-size: large;
   height: 200px
 }
-/* .displayUD:hover > li{
-  visibility: visible;
-  background-color: #cbd5d994;
-  height: 100px;
-  width: 90%;
-  border-radius: 10px;
-  margin: auto;
-  padding: 0;
-  text-align: center;
-} */
 
+main {
+  margin-top: 50px;
+}
+
+main>ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 150px;
+}
+
+main > ul > img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.67);
+}
+
+main > ul > li {
+  margin-top: 30px;
+  font-size: larger;
+  font-weight: 900;
+  color: #040404a9
+}
+
+nav > a > span {
+  margin-left: 15px;
+  background-color: red;
+  color: white;
+}

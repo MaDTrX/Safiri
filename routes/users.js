@@ -8,5 +8,6 @@ const usersCtrl = require('../controllers/users.js')
 router.get('/', usersCtrl.index)
 router.post('/:id', usersCtrl.sendRequest)
 router.post('/:id/friends', usersCtrl.acceptRequest)
+router.delete('/:id/friends', usersCtrl.denyRequest)
 
 module.exports = router;
